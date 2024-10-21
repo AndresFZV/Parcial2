@@ -24,7 +24,7 @@
                 </Tab>
                 <Tab text="Administrativa">
                     <content>
-
+                        <fx:include source="Administrativa.fxml" />
                     </content>
                 </Tab>
             </tabs>

@@ -1,12 +1,12 @@
 package co.edu.uniquindio.parcial2.parcial2.utils;
 
-
 import co.edu.uniquindio.parcial2.parcial2.model.*;
 
 public class DataUtil {
 
     public static PrestamoObjeto inicializarDatos() {
         PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
+
         // Empleados
         Empleado empleado1 = Empleado.builder()
                 .nombre("Stiven")
@@ -22,8 +22,24 @@ public class DataUtil {
                 .edad(28)
                 .build();
 
+        Empleado empleado3 = Empleado.builder()
+                .nombre("Laura")
+                .apellido("Gonzalez")
+                .cedula("1092")
+                .edad(30)
+                .build();
+
+        Empleado empleado4 = Empleado.builder()
+                .nombre("María")
+                .apellido("López")
+                .cedula("1093")
+                .edad(25)
+                .build();
+
         prestamoObjeto.getListaEmpleados().add(empleado1);
         prestamoObjeto.getListaEmpleados().add(empleado2);
+        prestamoObjeto.getListaEmpleados().add(empleado3);
+        prestamoObjeto.getListaEmpleados().add(empleado4);
 
         // Clientes
         Cliente cliente1 = Cliente.builder()
@@ -53,9 +69,29 @@ public class DataUtil {
                 .email("pedromartinez@gmail.com")
                 .build();
 
+        Cliente cliente4 = Cliente.builder()
+                .cedula("1097")
+                .nombre("Luisa")
+                .apellido("Fernandez")
+                .direccion("Salento")
+                .edad(22)
+                .email("luisaf@gmail.com")
+                .build();
+
+        Cliente cliente5 = Cliente.builder()
+                .cedula("1098")
+                .nombre("Miguel")
+                .apellido("Alvarez")
+                .direccion("Pereira")
+                .edad(40)
+                .email("miguela@gmail.com")
+                .build();
+
         prestamoObjeto.getListaClientes().add(cliente1);
         prestamoObjeto.getListaClientes().add(cliente2);
         prestamoObjeto.getListaClientes().add(cliente3);
+        prestamoObjeto.getListaClientes().add(cliente4);
+        prestamoObjeto.getListaClientes().add(cliente5);
 
         // Objetos
         Objeto objeto1 = Objeto.builder()
@@ -86,6 +122,43 @@ public class DataUtil {
                 .vecesPrestado(1)  // Este objeto ha sido prestado 1 vez
                 .build();
 
+        Objeto objeto5 = Objeto.builder()
+                .idObjeto("1238")
+                .nombre("Cámara")
+                .estado("Prestado")
+                .vecesPrestado(4)  // Este objeto ha sido prestado 4 veces
+                .build();
+
+        Objeto objeto6 = Objeto.builder()
+                .idObjeto("1239")
+                .nombre("Impresora")
+                .estado("Disponible")
+                .vecesPrestado(2)  // Este objeto ha sido prestado 2 veces
+                .build();
+
+        Objeto objeto7 = Objeto.builder()
+                .idObjeto("1240")
+                .nombre("Televisor")
+                .estado("Disponible")
+                .vecesPrestado(0)  // Este objeto no ha sido prestado
+                .build();
+
+        Objeto objeto8 = Objeto.builder()
+                .idObjeto("1241")
+                .nombre("Móvil")
+                .estado("Prestado")
+                .vecesPrestado(6)  // Este objeto ha sido prestado 6 veces
+                .build();
+
+        prestamoObjeto.getListaObjetos().add(objeto1);
+        prestamoObjeto.getListaObjetos().add(objeto2);
+        prestamoObjeto.getListaObjetos().add(objeto3);
+        prestamoObjeto.getListaObjetos().add(objeto4);
+        prestamoObjeto.getListaObjetos().add(objeto5);
+        prestamoObjeto.getListaObjetos().add(objeto6);
+        prestamoObjeto.getListaObjetos().add(objeto7);
+        prestamoObjeto.getListaObjetos().add(objeto8);
+
         // Prestamos
         Prestamo prestamo1 = new Prestamo();
         prestamo1.setNumeroPrestamo("0001");
@@ -108,10 +181,34 @@ public class DataUtil {
         prestamo3.setClienteAsociado(cliente3);
         prestamo3.getListaObjetosAsociados().add(objeto3);
 
+        Prestamo prestamo4 = new Prestamo();
+        prestamo4.setNumeroPrestamo("0004");
+        prestamo4.setDescripcion("Préstamo de cámara");
+        prestamo4.setEmpleadoAsociado(empleado3);
+        prestamo4.setClienteAsociado(cliente4);
+        prestamo4.getListaObjetosAsociados().add(objeto5);
+
+        Prestamo prestamo5 = new Prestamo();
+        prestamo5.setNumeroPrestamo("0005");
+        prestamo5.setDescripcion("Préstamo de impresora");
+        prestamo5.setEmpleadoAsociado(empleado4);
+        prestamo5.setClienteAsociado(cliente5);
+        prestamo5.getListaObjetosAsociados().add(objeto6);
+
+        Prestamo prestamo6 = new Prestamo();
+        prestamo6.setNumeroPrestamo("0006");
+        prestamo6.setDescripcion("Préstamo de televisor");
+        prestamo6.setEmpleadoAsociado(empleado3);
+        prestamo6.setClienteAsociado(cliente2);
+        prestamo6.getListaObjetosAsociados().add(objeto7);
+
         // Agregar préstamos a la lista
         prestamoObjeto.getListaPrestamos().add(prestamo1);
         prestamoObjeto.getListaPrestamos().add(prestamo2);
         prestamoObjeto.getListaPrestamos().add(prestamo3);
+        prestamoObjeto.getListaPrestamos().add(prestamo4);
+        prestamoObjeto.getListaPrestamos().add(prestamo5);
+        prestamoObjeto.getListaPrestamos().add(prestamo6);
 
         return prestamoObjeto;
     }
