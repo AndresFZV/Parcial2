@@ -121,7 +121,7 @@ public class ClienteViewController {
             //4. Solicitar crear cliente
             if(clienteController.agregarCliente(clienteDto)){
                 listaClientes.addAll(clienteDto);
-                limpiarCampos();
+                limpiarFormulario();
                 mostrarMensaje(TITULO_CLIENTE_AGREGADO, HEADER, BODY_CLIENTE_AGREGADO,Alert.AlertType.INFORMATION);
             }else{
                 mostrarMensaje(TITULO_CLIENTE_NO_AGREGADO, HEADER, BODY_CLIENTE_NO_AGREGADO,Alert.AlertType.ERROR);
@@ -132,13 +132,41 @@ public class ClienteViewController {
         }
     }
 
-    private void limpiarCampos() {
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtCedula.setText("");
-        txtEmail.setText("");
-        txtdireccion.setText("");
+    private void actualizarCliente() {
+        if (clienteSeleccionado != null) {
+            int index = listaClientes.indexOf(clienteSeleccionado);
+            ClienteDto clienteDto = crearClienteDto();
+            if (datosValidos(clienteDto)) {
+                if (clienteController.actualizarCliente(clienteDto)) {
+                    listaClientes.set(index, clienteDto);
+                    tableCliente.getSelectionModel().clearSelection();
+                    limpiarFormulario();
+                    mostrarMensaje(CLIENTE_ACTUALIZADO, HEADER, HEADER, Alert.AlertType.INFORMATION);
+                } else {
+                    mostrarMensaje(TITULO_INCOMPLETO, HEADER, HEADER, Alert.AlertType.ERROR);
+                }
+            }
+        }
     }
+
+
+    private void eliminarCliente() {
+        if(clienteSeleccionado != null){
+            listaClientes.remove(clienteSeleccionado);
+            tableCliente.refresh();
+            limpiarFormulario();
+            mostrarMensaje(CLIENT_ENCONTRADO, CLIENTE_ELIMINADO, HEADER,Alert.AlertType.INFORMATION);
+        }
+    }
+
+
+  // private void limpiarCampos() {
+  //     txtNombre.setText("");
+  //     txtApellido.setText("");
+  //     txtCedula.setText("");
+  //     txtEmail.setText("");
+  //     txtdireccion.setText("");
+  // }
 
     private ClienteDto crearClienteDto() {
         return new ClienteDto(
@@ -194,21 +222,31 @@ public class ClienteViewController {
         }
     }
 
+    private void limpiarFormulario(){
+        txtNombre.clear();
+        txtdireccion.clear();
+        txtApellido.clear();
+        txtCedula.clear();
+        txtEmail.clear();
+        clienteSeleccionado = null;
+        tableCliente.getSelectionModel().clearSelection();
+    }
+
     @FXML
     void onActualizarCliente(ActionEvent event) {
-
+        actualizarCliente();
     }
 
 
 
     @FXML
     void onEliminarCliente(ActionEvent event) {
-
+        eliminarCliente();
     }
 
     @FXML
     void onNuevoCliente(ActionEvent event) {
-
+        limpiarFormulario();
     }
 
 }

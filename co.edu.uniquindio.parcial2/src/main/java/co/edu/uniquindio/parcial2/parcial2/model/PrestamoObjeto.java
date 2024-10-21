@@ -1,5 +1,7 @@
 package co.edu.uniquindio.parcial2.parcial2.model;
 
+import co.edu.uniquindio.parcial2.parcial2.mapping.Dto.ClienteDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,6 +123,29 @@ public class PrestamoObjeto {
 
     public void setListaPrestamos(List<Prestamo> listaPrestamos) {
         this.listaPrestamos = listaPrestamos;
+    }
+
+    public boolean actualizarCliente(ClienteDto clienteDto) {
+        for (Cliente cliente : listaClientes){
+            if(cliente.getCedula().equals(clienteDto.cedula())){
+                cliente.setNombre(clienteDto.nombre());
+                cliente.setApellido(clienteDto.apellido());
+                cliente.setEmail(clienteDto.email());
+                cliente.setDireccion(clienteDto.direccion());
+                cliente.setCedula(clienteDto.cedula());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean eliminarCliente(String cedula) {
+        Cliente clienteEncontrado = obtenerCliente(cedula);
+        if(clienteEncontrado == null){
+            getListaClientes().remove(clienteEncontrado);
+            return true;
+        }
+        return  false;
     }
 }
 

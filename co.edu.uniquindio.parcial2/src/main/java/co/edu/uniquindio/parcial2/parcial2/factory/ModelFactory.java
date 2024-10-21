@@ -39,5 +39,13 @@ public class ModelFactory implements IModelFactoryService {
         return prestamoObjeto.crearCliente(cliente);
         //return prestamoObjeto.crearCliente(mapper.clienteDtoToCliente(clienteDto));
     }
+
+    public boolean actualizarCliente(ClienteDto clienteDto) {
+        return prestamoObjeto.actualizarCliente(clienteDto);
+    }
+
+    public boolean eliminarCliente(String cedula) {
+        return prestamoObjeto.eliminarCliente(cedula);
+    }
 }
 
