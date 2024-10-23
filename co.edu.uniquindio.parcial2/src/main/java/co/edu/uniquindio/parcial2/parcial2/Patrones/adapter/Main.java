@@ -14,7 +14,6 @@ public class Main {
         // Integrar la nueva pasarela de pagos a través del adaptador
         NuevaPasarelaPagos nuevaPasarela = new NuevaPasarelaPagos();
         SistemaPagoHeredado adaptador = new AdaptadorPasarela(nuevaPasarela);
-
         // Ahora podemos usar el adaptador para procesar pagos
         adaptador.procesarPago(10000.0);
     }
