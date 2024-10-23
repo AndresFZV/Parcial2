@@ -8,34 +8,24 @@
    <children>
       <TabPane prefHeight="676.0" prefWidth="964.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="punto 3 y 4">
+          <Tab text="Punto 2">
             <content>
                 <fx:include source="Busqueda.fxml" />
             </content>
           </Tab>
-          <Tab text="punto 5 y 6">
+          <Tab text="Punto 1 y 2">
             <content>
                 <fx:include source="Busqueda2.fxml" />
             </content>
           </Tab>
-            <Tab text="punto 7">
+            <Tab text="Punto 3">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   <fx:include source="Punto3.fxml" />
                </content>
             </Tab>
-            <Tab text="punto 8">
+            <Tab text="Punto 4">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="puntos adicionales">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="punto 9">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   <fx:include source="Punto4.fxml" />
                </content>
             </Tab>
         </tabs>
