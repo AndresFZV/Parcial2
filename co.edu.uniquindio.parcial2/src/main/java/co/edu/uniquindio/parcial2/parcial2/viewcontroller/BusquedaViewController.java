@@ -26,12 +26,8 @@ public class BusquedaViewController {
 
     @FXML
     private Button btnBuscar;
-
     @FXML
-    private Button btnConsultar;
-
-    @FXML
-    private TableView<Cliente> tablaClientes; // Tabla para mostrar los clientes
+    private TableView<Cliente> tablaClientes;
 
     @FXML
     private TableColumn<Cliente, String> tcCedula;
@@ -39,23 +35,15 @@ public class BusquedaViewController {
     @FXML
     private TableColumn<Cliente, String> tcNombre;
 
-    @FXML
-    private TableView<Objeto> tablaPrestamos;
-
-    @FXML
-    private TableColumn<Objeto, String> tcNombreObjeto;
-
-    @FXML
-    private TableColumn<Objeto, String> tcIdProducto;
 
     @FXML
     private TextField txtBuscar;
 
     @FXML
-    private TextField txtRango; // Campo para ingresar el número de préstamos
+    private TextField txtRango;
 
     private List<Cliente> listaClientes;
-    private List<Prestamo> listaPrestamos; // Lista de préstamos para contar los préstamos por cliente
+    private List<Prestamo> listaPrestamos;
 
     // Lista observable para la tabla de clientes
     private ObservableList<Cliente> clientesObservable;
@@ -95,7 +83,6 @@ public class BusquedaViewController {
     void initialize() {
         listaClientes = DataUtil.inicializarDatos().getListaClientes();
         clientesObservable = FXCollections.observableArrayList();
-
         initView();
     }
 

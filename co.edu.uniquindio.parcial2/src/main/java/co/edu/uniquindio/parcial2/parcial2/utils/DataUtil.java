@@ -2,6 +2,9 @@ package co.edu.uniquindio.parcial2.parcial2.utils;
 
 import co.edu.uniquindio.parcial2.parcial2.model.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class DataUtil {
 
     public static PrestamoObjeto inicializarDatos() {
@@ -98,56 +101,56 @@ public class DataUtil {
                 .idObjeto("1234")
                 .nombre("Bicicleta")
                 .estado("Prestado")
-                .vecesPrestado(5)  // Este objeto ha sido prestado 5 veces
+                .vecesPrestado(5)
                 .build();
 
         Objeto objeto2 = Objeto.builder()
                 .idObjeto("1235")
                 .nombre("Laptop")
                 .estado("Disponible")
-                .vecesPrestado(3)  // Este objeto ha sido prestado 3 veces
+                .vecesPrestado(3)
                 .build();
 
         Objeto objeto3 = Objeto.builder()
                 .idObjeto("1236")
                 .nombre("Proyector")
                 .estado("Prestado")
-                .vecesPrestado(8)  // Este objeto ha sido prestado 8 veces
+                .vecesPrestado(8)
                 .build();
 
         Objeto objeto4 = Objeto.builder()
                 .idObjeto("1237")
                 .nombre("Libro")
                 .estado("Disponible")
-                .vecesPrestado(1)  // Este objeto ha sido prestado 1 vez
+                .vecesPrestado(1)
                 .build();
 
         Objeto objeto5 = Objeto.builder()
                 .idObjeto("1238")
                 .nombre("Cámara")
                 .estado("Prestado")
-                .vecesPrestado(4)  // Este objeto ha sido prestado 4 veces
+                .vecesPrestado(4)
                 .build();
 
         Objeto objeto6 = Objeto.builder()
                 .idObjeto("1239")
                 .nombre("Impresora")
                 .estado("Disponible")
-                .vecesPrestado(2)  // Este objeto ha sido prestado 2 veces
+                .vecesPrestado(2)
                 .build();
 
         Objeto objeto7 = Objeto.builder()
                 .idObjeto("1240")
                 .nombre("Televisor")
                 .estado("Disponible")
-                .vecesPrestado(0)  // Este objeto no ha sido prestado
+                .vecesPrestado(0)
                 .build();
 
         Objeto objeto8 = Objeto.builder()
                 .idObjeto("1241")
                 .nombre("Móvil")
                 .estado("Prestado")
-                .vecesPrestado(6)  // Este objeto ha sido prestado 6 veces
+                .vecesPrestado(6)
                 .build();
 
         prestamoObjeto.getListaObjetos().add(objeto1);
@@ -163,6 +166,8 @@ public class DataUtil {
         Prestamo prestamo1 = new Prestamo();
         prestamo1.setNumeroPrestamo("0001");
         prestamo1.setDescripcion("Préstamo de bicicleta");
+        prestamo1.setFechaPrestamo(LocalDate.of(2024, 10, 1));
+        prestamo1.setFechaEntrega(LocalDate.of(2024, 10, 3));
         prestamo1.setEmpleadoAsociado(empleado1);
         prestamo1.setClienteAsociado(cliente1);
         prestamo1.getListaObjetosAsociados().add(objeto1);
@@ -170,6 +175,8 @@ public class DataUtil {
         Prestamo prestamo2 = new Prestamo();
         prestamo2.setNumeroPrestamo("0002");
         prestamo2.setDescripcion("Préstamo de laptop");
+        prestamo2.setFechaPrestamo(LocalDate.of(2024, 11, 5));
+        prestamo2.setFechaEntrega(LocalDate.of(2024, 11, 10));
         prestamo2.setEmpleadoAsociado(empleado2);
         prestamo2.setClienteAsociado(cliente2);
         prestamo2.getListaObjetosAsociados().add(objeto2);
@@ -177,6 +184,8 @@ public class DataUtil {
         Prestamo prestamo3 = new Prestamo();
         prestamo3.setNumeroPrestamo("0003");
         prestamo3.setDescripcion("Préstamo de proyector");
+        prestamo3.setFechaPrestamo(LocalDate.of(2024, 12, 12));
+        prestamo3.setFechaEntrega(LocalDate.of(2024, 12, 15));
         prestamo3.setEmpleadoAsociado(empleado1);
         prestamo3.setClienteAsociado(cliente3);
         prestamo3.getListaObjetosAsociados().add(objeto3);
@@ -184,6 +193,8 @@ public class DataUtil {
         Prestamo prestamo4 = new Prestamo();
         prestamo4.setNumeroPrestamo("0004");
         prestamo4.setDescripcion("Préstamo de cámara");
+        prestamo4.setFechaPrestamo(LocalDate.of(2025, 1, 20));
+        prestamo4.setFechaEntrega(LocalDate.of(2025, 1, 25));
         prestamo4.setEmpleadoAsociado(empleado3);
         prestamo4.setClienteAsociado(cliente4);
         prestamo4.getListaObjetosAsociados().add(objeto5);
@@ -191,6 +202,8 @@ public class DataUtil {
         Prestamo prestamo5 = new Prestamo();
         prestamo5.setNumeroPrestamo("0005");
         prestamo5.setDescripcion("Préstamo de impresora");
+        prestamo5.setFechaPrestamo(LocalDate.of(2025, 2, 5));
+        prestamo5.setFechaEntrega(LocalDate.of(2025, 2, 10));
         prestamo5.setEmpleadoAsociado(empleado4);
         prestamo5.setClienteAsociado(cliente5);
         prestamo5.getListaObjetosAsociados().add(objeto6);
@@ -198,11 +211,12 @@ public class DataUtil {
         Prestamo prestamo6 = new Prestamo();
         prestamo6.setNumeroPrestamo("0006");
         prestamo6.setDescripcion("Préstamo de televisor");
+        prestamo6.setFechaPrestamo(LocalDate.of(2025, 3, 15));
+        prestamo6.setFechaEntrega(LocalDate.of(2025, 3, 20));
         prestamo6.setEmpleadoAsociado(empleado3);
         prestamo6.setClienteAsociado(cliente2);
         prestamo6.getListaObjetosAsociados().add(objeto7);
 
-        // Agregar préstamos a la lista
         prestamoObjeto.getListaPrestamos().add(prestamo1);
         prestamoObjeto.getListaPrestamos().add(prestamo2);
         prestamoObjeto.getListaPrestamos().add(prestamo3);

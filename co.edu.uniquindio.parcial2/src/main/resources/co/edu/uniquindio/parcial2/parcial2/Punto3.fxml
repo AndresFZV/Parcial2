@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="676.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.parcial2.viewcontroller.Punto3ViewController">
    <children>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="676.0" prefWidth="964.0">
+      <SplitPane dividerPositions="0.3294780545670225" orientation="VERTICAL" prefHeight="676.0" prefWidth="964.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button fx:id="btnBuscar" layoutX="524.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="91.0" text="Buscar" />
+                  <Label layoutX="161.0" layoutY="151.0" text="Ingrese el rango de búsqueda:" />
+                  <TextField fx:id="txtRango" layoutX="342.0" layoutY="146.0" />
+                  <Separator layoutX="-6.0" layoutY="104.0" prefHeight="0.0" prefWidth="970.0" />
+                  <Label layoutX="404.0" layoutY="50.0" text="Punto número 3">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="203.0" prefHeight="3.0" prefWidth="962.0" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="tablaEmpleados" layoutX="14.0" prefHeight="440.0" prefWidth="962.0">
+                    <columns>
+                      <TableColumn fx:id="tcNombre" prefWidth="317.60006099939346" text="Nombre" />
+                      <TableColumn fx:id="tcApellido" prefWidth="171.99996948242188" text="Apellido" />
+                        <TableColumn fx:id="tcCedula" prefWidth="241.60003662109375" text="Cedula" />
+                        <TableColumn fx:id="tcEdad" prefWidth="232.800048828125" text="Edad" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

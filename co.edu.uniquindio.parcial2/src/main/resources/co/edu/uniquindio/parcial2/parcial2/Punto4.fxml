@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="676.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.parcial2.viewcontroller.Punto4ViewController">
+    <Label layoutX="30.0" layoutY="10.0" text="Instrucciones:" style="-fx-font-weight: bold;"/>
+    <Label layoutX="30.0" layoutY="30.0" text="1. Ingrese una fecha específica (yyyy-MM-dd) para buscar préstamos." />
+    <Label layoutX="30.0" layoutY="50.0" text="2. Ingrese un rango de fechas (yyyy-MM-dd - yyyy-MM-dd) para buscar." />
+    <Label layoutX="30.0" layoutY="70.0" text="3. Ingrese una fecha específica (yyyy-MM-dd) para encontrar préstamos" />
+    <Label layoutX="30.0" layoutY="90.0" text="   anteriores a esa fecha." />
+    <TextField fx:id="txtRangoFechas" layoutX="30.0" layoutY="120.0" prefHeight="40.0" prefWidth="200.0" promptText="yyyy-MM-dd - yyyy-MM-dd" />
+    <Button fx:id="buscarFecha" layoutX="250.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Buscar" />
+    <TableView fx:id="tablaFechas" layoutX="14.0" layoutY="170.0" prefHeight="554.0" prefWidth="952.0">
+        <columns>
+            <TableColumn fx:id="tcNumeroPrestamo" prefWidth="120.80002117156982" text="Número préstamo" />
+            <TableColumn fx:id="tcCliente" prefWidth="150.3999786376953" text="Cliente" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="164.800048828125" text="Descripción" />
+            <TableColumn fx:id="tcEmpleado" prefWidth="160.0" text="Empleado" />
+            <TableColumn fx:id="tcFechaPrestamo" prefWidth="155.2000732421875" text="Fecha Préstamo" />
+            <TableColumn fx:id="tcObjeto" prefWidth="197.60003662109375" text="Objeto" />
+        </columns>
+    </TableView>
 
 </AnchorPane>

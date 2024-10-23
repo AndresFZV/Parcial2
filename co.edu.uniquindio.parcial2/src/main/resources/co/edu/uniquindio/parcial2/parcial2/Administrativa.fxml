@@ -8,12 +8,12 @@
    <children>
       <TabPane prefHeight="676.0" prefWidth="964.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Punto 2">
+          <Tab text="Punto 2 - Cliente">
             <content>
                 <fx:include source="Busqueda.fxml" />
             </content>
           </Tab>
-          <Tab text="Punto 1 y 2">
+          <Tab text="Punto 1 y 2 - Producto y Cliente">
             <content>
                 <fx:include source="Busqueda2.fxml" />
             </content>

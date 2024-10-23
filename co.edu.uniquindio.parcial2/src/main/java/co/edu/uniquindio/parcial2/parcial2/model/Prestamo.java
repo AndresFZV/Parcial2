@@ -1,13 +1,14 @@
 package co.edu.uniquindio.parcial2.parcial2.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Prestamo {
     private String numeroPrestamo;
-    private Date fechaPrestamo;
-    private Date fechaEntrega;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaEntrega;
     private String descripcion;
     private Empleado empleadoAsociado;
     private Cliente clienteAsociado;
@@ -24,19 +25,19 @@ public class Prestamo {
         this.numeroPrestamo = numeroPrestamo;
     }
 
-    public Date getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaEntrega() {
+    public LocalDate getFechaEntrega() {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(Date fechaEntrega) {
+    public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 

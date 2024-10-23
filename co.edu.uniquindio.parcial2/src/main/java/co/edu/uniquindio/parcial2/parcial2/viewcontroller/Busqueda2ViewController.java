@@ -97,7 +97,7 @@ public class Busqueda2ViewController {
 
     private List<Cliente> filtrarClientesPorPrestamos(int rango) {
         return listaClientes.stream()
-                .filter(cliente -> filtrarPrestamosPorCliente(cliente) >= rango)
+                .filter(cliente -> filtrarPrestamosPorCliente(cliente) == rango)
                 .collect(Collectors.toList());
     }
 
