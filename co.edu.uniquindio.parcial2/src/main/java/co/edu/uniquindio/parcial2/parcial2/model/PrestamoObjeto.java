@@ -101,6 +101,16 @@ public class PrestamoObjeto {
         return resultado;
     }
 
+    public List<Prestamo> obtenerPrestamosPorCliente(Cliente cliente) {
+        List<Prestamo> prestamosDelCliente = new ArrayList<>();
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getClienteAsociado().equals(cliente)) {
+                prestamosDelCliente.add(prestamo);
+            }
+        }
+        return prestamosDelCliente;
+    }
+
     public List<Empleado> getListaEmpleados() {
         return listaEmpleados;
     }

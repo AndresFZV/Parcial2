@@ -1,20 +1,22 @@
 package co.edu.uniquindio.parcial2.parcial2.viewcontroller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import co.edu.uniquindio.parcial2.parcial2.model.Cliente;
 import co.edu.uniquindio.parcial2.parcial2.model.Objeto;
+import co.edu.uniquindio.parcial2.parcial2.model.Prestamo;
 import co.edu.uniquindio.parcial2.parcial2.utils.DataUtil;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class BusquedaViewController {
-
 
     @FXML
     private ResourceBundle resources;
@@ -29,10 +31,19 @@ public class BusquedaViewController {
     private Button btnConsultar;
 
     @FXML
+    private TableView<Cliente> tablaClientes; // Tabla para mostrar los clientes
+
+    @FXML
+    private TableColumn<Cliente, String> tcCedula;
+
+    @FXML
+    private TableColumn<Cliente, String> tcNombre;
+
+    @FXML
     private TableView<Objeto> tablaPrestamos;
 
     @FXML
-    private TableColumn<Objeto, String> tcNombre;
+    private TableColumn<Objeto, String> tcNombreObjeto;
 
     @FXML
     private TableColumn<Objeto, String> tcIdProducto;
@@ -41,65 +52,51 @@ public class BusquedaViewController {
     private TextField txtBuscar;
 
     @FXML
-    private TextField txtRango;
+    private TextField txtRango; // Campo para ingresar el número de préstamos
 
-    private List<Objeto> listaObjetos = DataUtil.inicializarDatos().getListaPrestamos()
-            .stream()
-            .flatMap(prestamo -> prestamo.getListaObjetosAsociados().stream()) // Extraer los objetos asociados a los préstamos
-            .collect(Collectors.toList());
+    private List<Cliente> listaClientes;
+    private List<Prestamo> listaPrestamos; // Lista de préstamos para contar los préstamos por cliente
 
-    @FXML
-    void onBuscarObjeto(ActionEvent event) {
-        buscarObjeto();
-    }
+    // Lista observable para la tabla de clientes
+    private ObservableList<Cliente> clientesObservable;
 
     @FXML
-    void onConsultarRango(ActionEvent event) {
-        consultarRango();
+    void onBuscarCliente(ActionEvent event) {
+        buscarCliente();
     }
 
-    private void buscarObjeto() {
-        String id = txtBuscar.getText().trim();
-        List<Objeto> objetosEncontrados = new ArrayList<>();
-        for (Objeto objeto : listaObjetos) {
-            if (objeto.getIdObjeto().equalsIgnoreCase(id)) {
-                objetosEncontrados.add(objeto);
-            }
+
+
+    private void buscarCliente() {
+        String cedula = txtBuscar.getText().trim();
+        if (cedula.isEmpty()) {
+            mostrarAlerta(Alert.AlertType.WARNING, "Advertencia", "Por favor, ingrese una cédula válida.");
+            return;
         }
-        if (objetosEncontrados.isEmpty()) {
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "Producto no encontrado.");
+        List<Cliente> clientesEncontrados = listaClientes.stream()
+                .filter(cliente -> cliente.getCedula().trim().equals(cedula))
+                .collect(Collectors.toList());
+        if (clientesEncontrados.isEmpty()) {
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "Cliente no encontrado.");
+            tablaClientes.setItems(FXCollections.observableArrayList());
         } else {
-            StringBuilder mensaje = new StringBuilder("Productos encontrados:\n\n");
-            for (Objeto objeto : objetosEncontrados) {
-                mensaje.append("===================================\n");
-                mensaje.append("ID del Producto: ").append(objeto.getIdObjeto()).append("\n");
-                mensaje.append("Nombre: ").append(objeto.getNombre()).append("\n");
-                mensaje.append("Veces Prestado: ").append(objeto.getVecesPrestado()).append("\n");
-            }
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", mensaje.toString());
+            actualizarTablaClientes(clientesEncontrados);
+            mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Cliente(s) encontrado(s).");
         }
     }
 
-    private void consultarRango() {
-        try {
-            int rango = Integer.parseInt(txtRango.getText().trim());
-            List<Objeto> objetosFiltrados = new ArrayList<>();
-            for (Objeto objeto : listaObjetos) {
-                if (objeto.getVecesPrestado() > rango) {
-                    objetosFiltrados.add(objeto);
-                }
-            }
-            tablaPrestamos.getItems().setAll(objetosFiltrados);
-        } catch (NumberFormatException e) {
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "Por favor, ingrese un número válido.");
-        }
+    private int contarPrestamosPorCliente(Cliente cliente) {
+        return (int) listaPrestamos.stream()
+                .filter(prestamo -> prestamo.getClienteAsociado().equals(cliente))
+                .count();
     }
 
     @FXML
     void initialize() {
+        listaClientes = DataUtil.inicializarDatos().getListaClientes();
+        clientesObservable = FXCollections.observableArrayList();
+
         initView();
-        btnConsultar.setOnAction(this::onConsultarRango);
-        btnBuscar.setOnAction(this::onBuscarObjeto);
     }
 
     private void initView() {
@@ -107,8 +104,14 @@ public class BusquedaViewController {
     }
 
     private void initDataBinding() {
+        tcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        tcIdProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdObjeto()));
+        tablaClientes.setItems(clientesObservable);
+    }
+
+    private void actualizarTablaClientes(List<Cliente> clientes) {
+        clientesObservable.clear();
+        clientesObservable.addAll(clientes);
     }
 
     public void mostrarAlerta(Alert.AlertType tipo, String title, String content) {

@@ -35,5 +35,7 @@ public interface IPrestamoUQ {
 
     Prestamo obtenerPrestamo(String numeroPrestamo);
 
+
+
 }
 

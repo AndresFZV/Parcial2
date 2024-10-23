@@ -1,57 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.* ?>
+<?import javafx.scene.layout.* ?>
 
-<AnchorPane prefHeight="676.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.parcial2.viewcontroller.Busqueda2ViewController">
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.parcial2.parcial2.viewcontroller.Busqueda2ViewController">
     <children>
-        <Separator layoutY="319.0" prefHeight="18.0" prefWidth="955.0" />
-        <SplitPane dividerPositions="0.3647058823529412" layoutX="20.0" layoutY="344.0" orientation="VERTICAL" prefHeight="318.0" prefWidth="923.0">
-            <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="932.0">
-               <children>
-                  <Label layoutX="380.0" layoutY="47.0" text="6. Disponibilidad del producto" />
-               </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <TableView fx:id="tablaObjetos" prefHeight="200.0" prefWidth="944.0">
-                            <columns>
-                        <TableColumn fx:id="tcNombreObjeto" prefWidth="519.2000732421875" text="Nombre" />
-                        <TableColumn fx:id="tcEstadoObjeto" prefWidth="410.4000244140625" text="Disponible" />
-                            </columns>
-                        </TableView>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-      <SplitPane dividerPositions="0.3647058823529412" layoutX="20.0" layoutY="14.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="923.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="932.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="51.0" prefHeight="23.0" prefWidth="278.0" text="Ingrese el rango para la busqueda de los clientes:" />
-                  <TextField fx:id="txtRango" layoutX="295.0" layoutY="50.0" />
-                  <Button fx:id="btnConsultarClientes" layoutX="572.0" layoutY="50.0" mnemonicParsing="false" onAction="#onConsultarClientes" prefHeight="26.0" prefWidth="150.0" text="Consultar" />
-                  <Label layoutX="20.0" layoutY="14.0" text="5." />
-               </children>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <TableView fx:id="tablaClientes" prefHeight="200.0" prefWidth="944.0">
-                     <columns>
-                        <TableColumn fx:id="tcNombreCliente" prefWidth="442.39997559785843" text="nombre" />
-                        <TableColumn fx:id="tcNumerosPrestamos" prefWidth="501.6000061035156" text="x" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
+        <VBox alignment="CENTER" spacing="10" layoutX="50" layoutY="20">
+            <Label text="Consultar Clientes por Rango" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtRango" promptText="Ingrese el rango" />
+            <Button fx:id="btnConsultarClientes" text="Consultar" onAction="#onConsultarClientes"/>
+
+            <TableView fx:id="tablaClientes" prefHeight="200" prefWidth="400" style="-fx-background-color: #f2f2f2;">
+                <columns>
+                    <TableColumn fx:id="tcNombreCliente" text="Nombre Cliente" />
+                    <TableColumn fx:id="tcNumerosPrestamos" text="Número de Préstamos" />
+                </columns>
+            </TableView>
+
+            <Label text="Objetos Disponibles" style="-fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnMostrarPrestados" text="Mostrar Prestados" onAction="#onMostrarPrestados"/>
+                <Button fx:id="btnMostrarNoPrestados" text="Mostrar No Prestados" onAction="#onMostrarNoPrestados"/>
+                <Button fx:id="btnMostrarTodos" text="Mostrar Todos" onAction="#onMostrarTodos"/>
+            </HBox>
+
+            <TableView fx:id="tablaObjetos" prefHeight="200" prefWidth="400" style="-fx-background-color: #f2f2f2;">
+                <columns>
+                    <TableColumn fx:id="tcNombreObjeto" text="Nombre Objeto" />
+                    <TableColumn fx:id="tcEstadoObjeto" text="Estado Objeto" />
+                </columns>
+            </TableView>
+        </VBox>
     </children>
 </AnchorPane>
