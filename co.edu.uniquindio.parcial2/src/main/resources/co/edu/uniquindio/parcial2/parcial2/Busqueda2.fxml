@@ -2,7 +2,10 @@
 
 <?import javafx.scene.control.* ?>
 <?import javafx.scene.layout.* ?>
-
+<?import javafx.scene.text.* ?>
+<?import javafx.scene.Scene ?>
+<?import javafx.stage.Stage ?>
+<?import javafx.geometry.* ?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.parcial2.parcial2.viewcontroller.Busqueda2ViewController">
     <children>
