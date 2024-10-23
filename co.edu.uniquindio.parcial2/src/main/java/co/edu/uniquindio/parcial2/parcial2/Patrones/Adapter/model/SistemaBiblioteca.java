@@ -5,7 +5,7 @@ import co.edu.uniquindio.parcial2.parcial2.Patrones.Adapter.services.ISistemaBib
 public class SistemaBiblioteca implements ISistemaBiblioteca {
 
     @Override
-    public void autentificacionAntiguo(String usuario,String contraseña) {
-        System.out.println("Ingresando: "+"\n"+"Usuario: "+usuario+"\n"+"Contraseña: "+contraseña);
+    public void autentificacionAntiguo(String usuario,String contrasena) {
+        System.out.println("Ingresando: "+"\n"+"Usuario: "+usuario+"\n"+"Contraseña: "+contrasena);
     }
 }

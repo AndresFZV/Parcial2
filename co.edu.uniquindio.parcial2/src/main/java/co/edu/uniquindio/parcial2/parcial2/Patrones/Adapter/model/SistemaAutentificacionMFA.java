@@ -5,12 +5,12 @@ import co.edu.uniquindio.parcial2.parcial2.Patrones.Adapter.services.ISistemaAut
 public class SistemaAutentificacionMFA implements ISistemaAutentificacionMFA {
 
     @Override
-    public void oneTimePassword(String unicaContraseña) {
-        System.out.println("Ingresando con unica contraseña:  "+unicaContraseña);
+    public void oneTimePassword(String unicaContrasena) {
+        System.out.println("Ingresando con unica contraseña:  " + unicaContrasena);
     }
     @Override
     public void autentificarHuella(String huella) {
-        System.out.println("Ingresando con huella: "+huella);
+        System.out.println("Ingresando con huella: "+ huella);
     }
     @Override
     public void autenticarDispositivo(String dispositivo) {

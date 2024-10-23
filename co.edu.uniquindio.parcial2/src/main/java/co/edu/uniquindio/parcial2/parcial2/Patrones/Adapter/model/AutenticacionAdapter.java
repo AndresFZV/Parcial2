@@ -9,8 +9,8 @@ public class AutenticacionAdapter implements ISistemaBiblioteca {
         this.sistemaAutentificacionMFA = sistemaAutentificacionMFA;
     }
     @Override
-    public void autentificacionAntiguo(String usuario, String contraseña) {
-        sistemaAutentificacionMFA.oneTimePassword(contraseña);
+    public void autentificacionAntiguo(String usuario, String contrasena) {
+        sistemaAutentificacionMFA.oneTimePassword(contrasena);
         sistemaAutentificacionMFA.autentificarHuella("Ingreso con huella");
         sistemaAutentificacionMFA.autenticarDispositivo("Ingreso con dispositivo");
     }
