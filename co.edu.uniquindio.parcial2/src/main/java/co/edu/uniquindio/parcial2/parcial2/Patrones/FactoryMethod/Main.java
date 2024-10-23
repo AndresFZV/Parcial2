@@ -22,7 +22,7 @@ public class Main {
 
         IProducto motocicleta = new BicicletaFactory();
         Vehiculo motocicletaFactory = motocicleta.crearProductoVehiculo("MRX-150",
-                "Ideal para clientes que buscan un transporte ágil");
+                "Motocileta ideal para clientes que buscan un transporte ágil");
         System.out.println(motocicletaFactory);
 
         IProducto lavadora = new LavadoraFactory();
